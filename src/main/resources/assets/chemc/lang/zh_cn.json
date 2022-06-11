@@ -1,0 +1,14 @@
+{
+	"item.chemc.unrusted_iron_pickaxe": "铁镐",
+	"item.chemc.slightly_rusted_iron_pickaxe": "轻微锈蚀的铁镐",
+	"item.chemc.mildly_rusted_iron_pickaxe": "轻度锈蚀的铁镐",
+	"item.chemc.moderately_rusted_iron_pickaxe": "中度锈蚀的铁镐",
+	"item.chemc.heavily_rusted_iron_pickaxe": "严重锈蚀的铁镐",
+	"item.chemc.completely_rusted_iron_pickaxe": "完全锈蚀的铁镐",
+	"item.chemc.triirontetraoxide_ingot": "Fe₃O₄ 锭",
+	"item.chemc.triirontetraoxide_dust": "Fe₃O₄ 粉",
+	"item.chemc.triirontetraoxide_sword": "Fe₃O₄ 剑",
+	"item.chemc.triirontetraoxide_axe": "Fe₃O₄ 斧",
+	"item.chemc.triirontetraoxide_pickaxe": "Fe₃O₄ 镐",
+	"item.chemc.triirontetraoxide_hoe": "Fe₃O₄ 锄 "
+}

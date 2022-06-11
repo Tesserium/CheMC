@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+  	{"item":"chemc:triirontetraoxide_ingot"}
+  ],
+  "result": {
+    "item": "chemc:triirontetraoxide_dust",
+    "count": 9
+  }
+}
