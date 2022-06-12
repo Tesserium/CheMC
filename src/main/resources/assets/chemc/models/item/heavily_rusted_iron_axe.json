@@ -1,0 +1,7 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+  	"layer0": "chemc:item/s",
+    "layer1": "chemc:item/heavily_rusted_iron_axe_head"
+  }
+}

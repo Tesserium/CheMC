@@ -51,20 +51,20 @@ public class CheMC implements ModInitializer {
 			40000);
 	public static final TarnishablePickaxeItem UNRUSTED_IRON_PX = new TarnishablePickaxeItem(
 			CheMCMaterial.UNRUSTED_IRON, new FabricItemSettings().group(ItemGroup.TOOLS), SLIGHTLY_RUSTED_IRON_PX,
-			42000);
-	public static final _AxeItem COMPLETELY_RUSTED_IRON_AX = new _AxeItem(CheMCMaterial.COMPLETELY_RUSTED_IRON, 8.5F, 0,
-			new FabricItemSettings().group(ItemGroup.TOOLS));
+			44000);
+	public static final _AxeItem COMPLETELY_RUSTED_IRON_AX = new _AxeItem(CheMCMaterial.COMPLETELY_RUSTED_IRON, 8.5F,
+			-0.1F, new FabricItemSettings().group(ItemGroup.TOOLS));
 	public static final TarnishableAxeItem HEAVILY_RUSTED_IRON_AX = new TarnishableAxeItem(
-			CheMCMaterial.HEAVILY_RUSTED_IRON, 8.6F, 0, new FabricItemSettings().group(ItemGroup.TOOLS),
+			CheMCMaterial.HEAVILY_RUSTED_IRON, 8.6F, -0.08F, new FabricItemSettings().group(ItemGroup.TOOLS),
 			COMPLETELY_RUSTED_IRON_AX, 32000);
 	public static final TarnishableAxeItem MODERATELY_RUSTED_IRON_AX = new TarnishableAxeItem(
-			CheMCMaterial.MODERATELY_RUSTED_IRON, 8.7F, 0, new FabricItemSettings().group(ItemGroup.TOOLS),
+			CheMCMaterial.MODERATELY_RUSTED_IRON, 8.7F, -0.06F, new FabricItemSettings().group(ItemGroup.TOOLS),
 			HEAVILY_RUSTED_IRON_AX, 36000);
 	public static final TarnishableAxeItem MILDLY_RUSTED_IRON_AX = new TarnishableAxeItem(
-			CheMCMaterial.MILDLY_RUSTED_IRON, 8.8F, 0, new FabricItemSettings().group(ItemGroup.TOOLS),
+			CheMCMaterial.MILDLY_RUSTED_IRON, 8.8F, -0.04F, new FabricItemSettings().group(ItemGroup.TOOLS),
 			MODERATELY_RUSTED_IRON_AX, 42000);
 	public static final TarnishableAxeItem SLIGHTLY_RUSTED_IRON_AX = new TarnishableAxeItem(
-			CheMCMaterial.SLIGHTLY_RUSTED_IRON, 8.9F, 0, new FabricItemSettings().group(ItemGroup.TOOLS),
+			CheMCMaterial.SLIGHTLY_RUSTED_IRON, 8.9F, -0.02F, new FabricItemSettings().group(ItemGroup.TOOLS),
 			MILDLY_RUSTED_IRON_AX, 45000);
 	public static final TarnishableAxeItem UNRUSTED_IRON_AX = new TarnishableAxeItem(CheMCMaterial.UNRUSTED_IRON, 9.0F,
 			0, new FabricItemSettings().group(ItemGroup.TOOLS), SLIGHTLY_RUSTED_IRON_AX, 48000);

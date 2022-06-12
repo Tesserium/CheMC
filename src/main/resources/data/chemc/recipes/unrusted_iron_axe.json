@@ -1,8 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "WW ",
-    "WS ",
+    "WWW",
+    " S ",
     " S "
   ],
   "key": {
@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "chemc:unrusted_iron_axe",
+    "item": "chemc:unrusted_iron_pickaxe",
     "count": 1
   }
 }
