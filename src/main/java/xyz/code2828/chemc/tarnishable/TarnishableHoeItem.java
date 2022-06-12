@@ -2,19 +2,20 @@ package xyz.code2828.chemc.tarnishable;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.HoeItem;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.world.World;
 import xyz.code2828.chemc.CheMC;
 
-public class TarnishablePickaxeItem extends PickaxeItem implements Tarnishable {
+public class TarnishableHoeItem extends HoeItem implements Tarnishable {
 	private ItemConvertible nextItem;
 	public int tarnishTick;
 
-	public TarnishablePickaxeItem(ToolMaterial material, Settings settings, ItemConvertible nextItem, int tarnishTick) {
-		super(material, 1, -2.8F, settings);
+	public TarnishableHoeItem(ToolMaterial material, float attackSpeed, Settings settings, ItemConvertible nextItem,
+			int tarnishTick) {
+		super(material, (int) (0 - Math.ceil(material.getAttackDamage())), attackSpeed, settings);
 		this.nextItem = nextItem;
 		this.tarnishTick = tarnishTick;
 	}
@@ -64,6 +65,5 @@ public class TarnishablePickaxeItem extends PickaxeItem implements Tarnishable {
 					"Created a timestamp for ItemStack " + stack.toString() + " at time " + String.valueOf(timestamp));
 		}
 	}
-}
 
-// 263 -30 193 completely spherical cave.
+}

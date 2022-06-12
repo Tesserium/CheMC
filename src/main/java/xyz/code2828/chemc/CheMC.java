@@ -5,14 +5,13 @@ import org.slf4j.LoggerFactory;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import xyz.code2828.chemc.items.ChemistryItem;
-import xyz.code2828.chemc.tarnishable.Tarnishable;
 import xyz.code2828.chemc.tarnishable.TarnishableAxeItem;
+import xyz.code2828.chemc.tarnishable.TarnishableHoeItem;
 import xyz.code2828.chemc.tarnishable.TarnishablePickaxeItem;
 import xyz.code2828.chemc.toolclasses._AxeItem;
 import xyz.code2828.chemc.toolclasses._HoeItem;
@@ -31,7 +30,7 @@ public class CheMC implements ModInitializer {
 			new FabricItemSettings().group(ItemGroup.TOOLS));
 	public static final _AxeItem TRIIRONTETRAOXIDE_AX = new _AxeItem(CheMCMaterial.TRIIRONTETRAOXIDE, 9.5F, 0,
 			new FabricItemSettings().group(ItemGroup.TOOLS));
-	public static final _HoeItem TRIIRONTETRAOXIDE_HO = new _HoeItem(CheMCMaterial.TRIIRONTETRAOXIDE, -4, 0.0F,
+	public static final _HoeItem TRIIRONTETRAOXIDE_HO = new _HoeItem(CheMCMaterial.TRIIRONTETRAOXIDE, 0.0F,
 			new FabricItemSettings().group(ItemGroup.TOOLS));
 	public static final _SwordItem TRIIRONTETRAOXIDE_SW = new _SwordItem(CheMCMaterial.TRIIRONTETRAOXIDE,
 			new FabricItemSettings().group(ItemGroup.COMBAT));
@@ -68,6 +67,22 @@ public class CheMC implements ModInitializer {
 			MILDLY_RUSTED_IRON_AX, 45000);
 	public static final TarnishableAxeItem UNRUSTED_IRON_AX = new TarnishableAxeItem(CheMCMaterial.UNRUSTED_IRON, 9.0F,
 			0, new FabricItemSettings().group(ItemGroup.TOOLS), SLIGHTLY_RUSTED_IRON_AX, 48000);
+	public static final _HoeItem COMPLETELY_RUSTED_IRON_HO = new _HoeItem(CheMCMaterial.COMPLETELY_RUSTED_IRON, -1.0F,
+			new FabricItemSettings().group(ItemGroup.TOOLS));
+	public static final TarnishableHoeItem HEAVILY_RUSTED_IRON_HO = new TarnishableHoeItem(
+			CheMCMaterial.HEAVILY_RUSTED_IRON, -1.0F, new FabricItemSettings().group(ItemGroup.TOOLS),
+			COMPLETELY_RUSTED_IRON_AX, 20000);
+	public static final TarnishableHoeItem MODERATELY_RUSTED_IRON_HO = new TarnishableHoeItem(
+			CheMCMaterial.MODERATELY_RUSTED_IRON, -1.0F, new FabricItemSettings().group(ItemGroup.TOOLS),
+			HEAVILY_RUSTED_IRON_AX, 26000);
+	public static final TarnishableHoeItem MILDLY_RUSTED_IRON_HO = new TarnishableHoeItem(
+			CheMCMaterial.MILDLY_RUSTED_IRON, -1.0F, new FabricItemSettings().group(ItemGroup.TOOLS),
+			MODERATELY_RUSTED_IRON_AX, 32000);
+	public static final TarnishableHoeItem SLIGHTLY_RUSTED_IRON_HO = new TarnishableHoeItem(
+			CheMCMaterial.SLIGHTLY_RUSTED_IRON, -1.0F, new FabricItemSettings().group(ItemGroup.TOOLS),
+			MILDLY_RUSTED_IRON_AX, 36000);
+	public static final TarnishableHoeItem UNRUSTED_IRON_HO = new TarnishableHoeItem(CheMCMaterial.UNRUSTED_IRON, -1.0F,
+			new FabricItemSettings().group(ItemGroup.TOOLS), SLIGHTLY_RUSTED_IRON_AX, 40000);
 
 	public void registerI(ItemConvertible item, String unlocalizedName) {
 		Registry.register(Registry.ITEM, new Identifier("chemc", unlocalizedName), item.asItem());
@@ -93,6 +108,12 @@ public class CheMC implements ModInitializer {
 		registerI(MODERATELY_RUSTED_IRON_AX, "moderately_rusted_iron_axe");
 		registerI(HEAVILY_RUSTED_IRON_AX, "heavily_rusted_iron_axe");
 		registerI(COMPLETELY_RUSTED_IRON_AX, "completely_rusted_iron_axe");
+		registerI(UNRUSTED_IRON_HO, "unrusted_iron_hoe");
+		registerI(SLIGHTLY_RUSTED_IRON_HO, "slightly_rusted_iron_hoe");
+		registerI(MILDLY_RUSTED_IRON_HO, "mildly_rusted_iron_hoe");
+		registerI(MODERATELY_RUSTED_IRON_HO, "moderately_rusted_iron_hoe");
+		registerI(HEAVILY_RUSTED_IRON_HO, "heavily_rusted_iron_hoe");
+		registerI(COMPLETELY_RUSTED_IRON_HO, "completely_rusted_iron_hoe");
 //		registerI(COPPER_PX, "copper_pickaxe");
 	}
 
