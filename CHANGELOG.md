@@ -1,3 +1,6 @@
+### 6.0-β3
+- Iron shovel and hoe now rusts at the same speed as iron pickaxe.
+
 ### 6.0-β2
 - Iron axe now rusts. Ticks are (in ticks): 48000, 45000, 42000, 36000, 32000.
 - Tweaked the rusting time of unrusted iron pickaxe from 42000 to 44000 ticks.

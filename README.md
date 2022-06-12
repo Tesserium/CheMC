@@ -2,8 +2,7 @@
 A mod that aims to make Minecraft as scientific as possible. 
 
 # Modifications
-- Added Fe<sub>3</sub>O<sub>4</sub> tools. They have a similar but a little not-so-good properties as netherite.
-- Iron tools now rusts.
+- All 4 iron tools now rusts.
 
 
 ## Versioning Convention
