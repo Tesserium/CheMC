@@ -87,6 +87,7 @@ public enum CheMCMaterial implements ToolMaterial {
 
 	// $FF: synthetic method
 	private static CheMCMaterial[] mats() {
-		return new CheMCMaterial[] { TRIIRONTETRAOXIDE };
+		return new CheMCMaterial[] { TRIIRONTETRAOXIDE, COPPER, UNRUSTED_IRON, SLIGHTLY_RUSTED_IRON, MILDLY_RUSTED_IRON,
+				MODERATELY_RUSTED_IRON, HEAVILY_RUSTED_IRON, COMPLETELY_RUSTED_IRON };
 	}
 }

@@ -16,6 +16,7 @@ Where:<br>
 | a | major version (increments 1 with every new Minecraft version I decided to have the mod developed on) |
 | b | minor version |
 | c | patch/hotfix version |
+
 α/β/γ/ψ/ω:<br>
 	α = completely insider version, may not even launch properly<br>
 	β = insider version, silimar to normal "alpha"<br>

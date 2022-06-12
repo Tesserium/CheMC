@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import xyz.code2828.chemc.items.ChemistryItem;
 import xyz.code2828.chemc.tarnishable.Tarnishable;
+import xyz.code2828.chemc.tarnishable.TarnishableAxeItem;
 import xyz.code2828.chemc.tarnishable.TarnishablePickaxeItem;
 import xyz.code2828.chemc.toolclasses._AxeItem;
 import xyz.code2828.chemc.toolclasses._HoeItem;
@@ -34,34 +35,46 @@ public class CheMC implements ModInitializer {
 			new FabricItemSettings().group(ItemGroup.TOOLS));
 	public static final _SwordItem TRIIRONTETRAOXIDE_SW = new _SwordItem(CheMCMaterial.TRIIRONTETRAOXIDE,
 			new FabricItemSettings().group(ItemGroup.COMBAT));
-	public static final TarnishablePickaxeItem UNRUSTED_IRON_PX = new TarnishablePickaxeItem(
-			CheMCMaterial.UNRUSTED_IRON, new FabricItemSettings().group(ItemGroup.TOOLS), null, 42000);
-	public static final TarnishablePickaxeItem SLIGHTLY_RUSTED_IRON_PX = new TarnishablePickaxeItem(
-			CheMCMaterial.SLIGHTLY_RUSTED_IRON, new FabricItemSettings().group(ItemGroup.TOOLS), null, 40000);
-	public static final TarnishablePickaxeItem MILDLY_RUSTED_IRON_PX = new TarnishablePickaxeItem(
-			CheMCMaterial.MILDLY_RUSTED_IRON, new FabricItemSettings().group(ItemGroup.TOOLS), null, 36000);
-	public static final TarnishablePickaxeItem MODERATELY_RUSTED_IRON_PX = new TarnishablePickaxeItem(
-			CheMCMaterial.MODERATELY_RUSTED_IRON, new FabricItemSettings().group(ItemGroup.TOOLS), null, 32000);
-	public static final TarnishablePickaxeItem HEAVILY_RUSTED_IRON_PX = new TarnishablePickaxeItem(
-			CheMCMaterial.HEAVILY_RUSTED_IRON, new FabricItemSettings().group(ItemGroup.TOOLS), null, 24000);
 	public static final _PickaxeItem COMPLETELY_RUSTED_IRON_PX = new _PickaxeItem(CheMCMaterial.COMPLETELY_RUSTED_IRON,
 			new FabricItemSettings().group(ItemGroup.TOOLS));
+	public static final TarnishablePickaxeItem HEAVILY_RUSTED_IRON_PX = new TarnishablePickaxeItem(
+			CheMCMaterial.HEAVILY_RUSTED_IRON, new FabricItemSettings().group(ItemGroup.TOOLS),
+			COMPLETELY_RUSTED_IRON_PX, 24000);
+	public static final TarnishablePickaxeItem MODERATELY_RUSTED_IRON_PX = new TarnishablePickaxeItem(
+			CheMCMaterial.MODERATELY_RUSTED_IRON, new FabricItemSettings().group(ItemGroup.TOOLS),
+			HEAVILY_RUSTED_IRON_PX, 32000);
+	public static final TarnishablePickaxeItem MILDLY_RUSTED_IRON_PX = new TarnishablePickaxeItem(
+			CheMCMaterial.MILDLY_RUSTED_IRON, new FabricItemSettings().group(ItemGroup.TOOLS),
+			MODERATELY_RUSTED_IRON_PX, 36000);
+	public static final TarnishablePickaxeItem SLIGHTLY_RUSTED_IRON_PX = new TarnishablePickaxeItem(
+			CheMCMaterial.SLIGHTLY_RUSTED_IRON, new FabricItemSettings().group(ItemGroup.TOOLS), MILDLY_RUSTED_IRON_PX,
+			40000);
+	public static final TarnishablePickaxeItem UNRUSTED_IRON_PX = new TarnishablePickaxeItem(
+			CheMCMaterial.UNRUSTED_IRON, new FabricItemSettings().group(ItemGroup.TOOLS), SLIGHTLY_RUSTED_IRON_PX,
+			42000);
+	public static final _AxeItem COMPLETELY_RUSTED_IRON_AX = new _AxeItem(CheMCMaterial.COMPLETELY_RUSTED_IRON, 8.5F, 0,
+			new FabricItemSettings().group(ItemGroup.TOOLS));
+	public static final TarnishableAxeItem HEAVILY_RUSTED_IRON_AX = new TarnishableAxeItem(
+			CheMCMaterial.HEAVILY_RUSTED_IRON, 8.6F, 0, new FabricItemSettings().group(ItemGroup.TOOLS),
+			COMPLETELY_RUSTED_IRON_AX, 32000);
+	public static final TarnishableAxeItem MODERATELY_RUSTED_IRON_AX = new TarnishableAxeItem(
+			CheMCMaterial.MODERATELY_RUSTED_IRON, 8.7F, 0, new FabricItemSettings().group(ItemGroup.TOOLS),
+			HEAVILY_RUSTED_IRON_AX, 36000);
+	public static final TarnishableAxeItem MILDLY_RUSTED_IRON_AX = new TarnishableAxeItem(
+			CheMCMaterial.MILDLY_RUSTED_IRON, 8.8F, 0, new FabricItemSettings().group(ItemGroup.TOOLS),
+			MODERATELY_RUSTED_IRON_AX, 42000);
+	public static final TarnishableAxeItem SLIGHTLY_RUSTED_IRON_AX = new TarnishableAxeItem(
+			CheMCMaterial.SLIGHTLY_RUSTED_IRON, 8.9F, 0, new FabricItemSettings().group(ItemGroup.TOOLS),
+			MILDLY_RUSTED_IRON_AX, 45000);
+	public static final TarnishableAxeItem UNRUSTED_IRON_AX = new TarnishableAxeItem(CheMCMaterial.UNRUSTED_IRON, 9.0F,
+			0, new FabricItemSettings().group(ItemGroup.TOOLS), SLIGHTLY_RUSTED_IRON_AX, 48000);
 
 	public void registerI(ItemConvertible item, String unlocalizedName) {
 		Registry.register(Registry.ITEM, new Identifier("chemc", unlocalizedName), item.asItem());
 	}
 
-	public void setNI(Tarnishable tarnishableI, ItemConvertible nextItem) {
-		tarnishableI.setNextItem(nextItem);
-	}
-
 	@Override
 	public void onInitialize() {
-		setNI(UNRUSTED_IRON_PX, SLIGHTLY_RUSTED_IRON_PX);
-		setNI(SLIGHTLY_RUSTED_IRON_PX, MILDLY_RUSTED_IRON_PX);
-		setNI(MILDLY_RUSTED_IRON_PX, MODERATELY_RUSTED_IRON_PX);
-		setNI(MODERATELY_RUSTED_IRON_PX, HEAVILY_RUSTED_IRON_PX);
-		setNI(HEAVILY_RUSTED_IRON_PX, COMPLETELY_RUSTED_IRON_PX);
 		registerI(TRIIRONTETRAOXIDE_INGOT, "triirontetraoxide_ingot");
 		registerI(TRIIRONTETRAOXIDE_DUST, "triirontetraoxide_dust");
 		registerI(TRIIRONTETRAOXIDE_PX, "triirontetraoxide_pickaxe");
@@ -70,10 +83,16 @@ public class CheMC implements ModInitializer {
 		registerI(TRIIRONTETRAOXIDE_AX, "triirontetraoxide_axe");
 		registerI(UNRUSTED_IRON_PX, "unrusted_iron_pickaxe");
 		registerI(SLIGHTLY_RUSTED_IRON_PX, "slightly_rusted_iron_pickaxe");
-		registerI(MODERATELY_RUSTED_IRON_PX, "moderately_rusted_iron_pickaxe");
 		registerI(MILDLY_RUSTED_IRON_PX, "mildly_rusted_iron_pickaxe");
+		registerI(MODERATELY_RUSTED_IRON_PX, "moderately_rusted_iron_pickaxe");
 		registerI(HEAVILY_RUSTED_IRON_PX, "heavily_rusted_iron_pickaxe");
 		registerI(COMPLETELY_RUSTED_IRON_PX, "completely_rusted_iron_pickaxe");
+		registerI(UNRUSTED_IRON_AX, "unrusted_iron_axe");
+		registerI(SLIGHTLY_RUSTED_IRON_AX, "slightly_rusted_iron_axe");
+		registerI(MILDLY_RUSTED_IRON_AX, "mildly_rusted_iron_axe");
+		registerI(MODERATELY_RUSTED_IRON_AX, "moderately_rusted_iron_axe");
+		registerI(HEAVILY_RUSTED_IRON_AX, "heavily_rusted_iron_axe");
+		registerI(COMPLETELY_RUSTED_IRON_AX, "completely_rusted_iron_axe");
 //		registerI(COPPER_PX, "copper_pickaxe");
 	}
 
