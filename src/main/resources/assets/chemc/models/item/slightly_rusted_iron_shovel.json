@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "chemc:item/slightly_rusted_iron_shovel"
+  }
+}
