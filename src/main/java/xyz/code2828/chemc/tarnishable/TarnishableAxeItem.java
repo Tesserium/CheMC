@@ -9,42 +9,45 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.world.World;
 import xyz.code2828.chemc.CheMC;
 
-public class TarnishableAxeItem extends AxeItem implements Tarnishable {
+public class TarnishableAxeItem extends AxeItem implements Tarnishable
+{
 	private int tarnishTick;
 	private ItemConvertible nextItem;
-	
+
 	/*
 	 * @param relativeAttackSpeed Mostly between ±0.1F.
 	 */
-	public TarnishableAxeItem(ToolMaterial material, float topAttackDamage, float relativeAttackSpeed,
-			Settings settings, ItemConvertible nextItem, int tarnishTick) {
+	public TarnishableAxeItem(ToolMaterial material, float topAttackDamage, float relativeAttackSpeed, Settings settings,
+			ItemConvertible nextItem, int tarnishTick)
+	{
 		super(material, topAttackDamage - 1 - material.getAttackDamage(), -3.1F + relativeAttackSpeed, settings);
 		this.setNextItem(nextItem);
 		this.tarnishTick = tarnishTick;
 	}
 
 	@Override
-	public ItemConvertible getNextItem() {
-		return nextItem;
-	}
+	public ItemConvertible getNextItem()
+	{ return nextItem; }
 
 	@Override
-	public int getTarnishTick() {
-		return tarnishTick;
-	}
+	public int getTarnishTick()
+	{ return tarnishTick; }
 
 	@Override
-	public void setNextItem(ItemConvertible ic) {
-		nextItem = ic;
-	}
+	public void setNextItem(ItemConvertible ic)
+	{ nextItem = ic; }
 
 	@Override
-	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-		if (stack.getNbt().getKeys().contains("tarnishTick")) {
+	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected)
+	{
+		if (stack.getNbt().getKeys().contains("tarnishTick"))
+		{
 			// already has a timestamp; check if world time is bigger than the timestamp:
 			long timestamp = stack.getNbt().getLong("tarnishTick");
-			if (world.getTime() >= timestamp) {
-				if (!(entity instanceof PlayerEntity)) {
+			if (world.getTime() >= timestamp)
+			{
+				if (!(entity instanceof PlayerEntity))
+				{
 					// is not a PlayerEntity
 					return;
 				}
@@ -58,13 +61,14 @@ public class TarnishableAxeItem extends AxeItem implements Tarnishable {
 				CheMC.LOGGER.debug("The item " + oldItem.toString() + " of " + entity.getName() + " tarnished into "
 						+ newItem.asItem().getName() + "!");
 			}
-		} else // no tarnishment timestamp
+		}
+		else // no tarnishment timestamp
 		{
 			// create one
 			long timestamp = world.getTime() + this.tarnishTick;
 			stack.getNbt().putLong("tarnishTick", timestamp);
-			CheMC.LOGGER.debug(
-					"Created a timestamp for ItemStack " + stack.toString() + " at time " + String.valueOf(timestamp));
+			CheMC.LOGGER
+					.debug("Created a timestamp for ItemStack " + stack.toString() + " at time " + String.valueOf(timestamp));
 		}
 	}
 

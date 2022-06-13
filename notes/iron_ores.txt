@@ -1,0 +1,25 @@
+₀₁₂₃₄₅₆₇₈₉
+1. 菱铁矿——mc原版
+n=12, p=0.6, avg=7.2
+(1) 4FeCO₃ + O₂ --heat-> 2Fe₂O₃ + 4CO₂;
+	Fe₂O₃ + 3red --heat-> 2Fe + 3redO
+
+2. 磁铁矿
+(1) 直接用于合成下界合金
+(2) 4Fe₃O₄ + O₂ --heat-> 6Fe₂O₃;
+	Fe₂O₃ + 3red --heat-> 2Fe + 3redO
+	
+3. 黄铁矿
+(1) 2FeS₂ + 11O₂ --heat/burn-> 2Fe₂O₃ + 4SO₂;
+	Fe₂O₃ + 3red --heat-> 2Fe + 3redO
+	
+4. 黄铜矿
+(1) 2CuFeS₂ + 13O₂ --heat/burn-> 2Fe₂O₃ + 4SO₂ + 2CuO;
+	2CuO + 2Fe₂O₃ + 8red --heat-> 2Fe₂Cu + 8redO
+... where Fe/Cu will probably used as a great conductor with magnetic properties (?)
+
+5. 赤铁矿/褐铁矿
+(1) Fe₂O₃·xH₂O + 3red --heat-> 2Fe + 3redO + xH₂O
+
+6. 蓝铁矿
+Fe₃(PO₄)₂

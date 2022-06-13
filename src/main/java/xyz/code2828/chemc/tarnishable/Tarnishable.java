@@ -3,7 +3,8 @@ package xyz.code2828.chemc.tarnishable;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Vanishable;
 
-public interface Tarnishable extends Vanishable {
+public interface Tarnishable extends Vanishable
+{
 	ItemConvertible getNextItem();
 
 	int getTarnishTick();

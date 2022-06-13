@@ -1,0 +1,8 @@
+{
+	"type": "smelting",
+	"group": "idk",
+	"ingredient": "chemc:siderite_grains",
+	"result": "chemc:diirontrioxide_grains",
+	"experience": 1,
+	"cookingtime": 225
+}

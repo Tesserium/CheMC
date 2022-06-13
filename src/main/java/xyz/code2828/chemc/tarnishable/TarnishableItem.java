@@ -7,33 +7,37 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class TarnishableItem extends Item implements Tarnishable {
+public class TarnishableItem extends Item implements Tarnishable
+{
 	public ItemConvertible nextItem;
 	public int tarnishTick;
 
-	public TarnishableItem(Settings settings, ItemConvertible next_item, int tarnishTick) {
+	public TarnishableItem(Settings settings, ItemConvertible next_item, int tarnishTick)
+	{
 		super(settings);
 		this.nextItem = next_item;
 		this.tarnishTick = tarnishTick;
 	}
 
 	@Override
-	public ItemConvertible getNextItem() {
-		return nextItem;
-	}
+	public ItemConvertible getNextItem()
+	{ return nextItem; }
 
 	@Override
-	public int getTarnishTick() {
-		return tarnishTick;
-	}
+	public int getTarnishTick()
+	{ return tarnishTick; }
 
 	@Override
-	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-		if (stack.getNbt().getKeys().contains("tarnishTick")) {
+	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected)
+	{
+		if (stack.getNbt().getKeys().contains("tarnishTick"))
+		{
 			// already has a timestamp; check if world time is bigger than the timestamp:
 			long timestamp = stack.getNbt().getLong("tarnishTick");
-			if (world.getTime() >= timestamp) {
-				if (!(entity instanceof PlayerEntity)) {
+			if (world.getTime() >= timestamp)
+			{
+				if (!(entity instanceof PlayerEntity))
+				{
 					// is not a PlayerEntity
 					return;
 				}
@@ -48,9 +52,10 @@ public class TarnishableItem extends Item implements Tarnishable {
 	}
 
 	@Override
-	public void setNextItem(ItemConvertible ic) {
-		nextItem=ic;
-		
+	public void setNextItem(ItemConvertible ic)
+	{
+		nextItem = ic;
+
 	}
 
 }
