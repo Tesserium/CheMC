@@ -2,7 +2,8 @@
 - Iron ore (now called "siderite") now drops at most 12, on average 7.2 siderite powders. 9 siderite powders form a pack of siderite powder. 2 packs of siderite powder and 1 pack of coal powder can craft a "Siderite Powder Mixed with Coal". On smelting this mixture undergo the reaction of 2FeCO₃ + C --heat-> 2Fe + 3CO₂ and forms raw iron. Melt the raw iron again forms iron ingot.
 - Known bugs/non-scientific stuff: smelting siderite items will yield Fe₂O₃. It has no texture and no use.
 
-Appendix: The possibility of each dropping amount of siderite powder is in the following table:
+Appendix:<br>
+The possibility of each dropping amount of siderite powder of iron ore is in the following table:
 | Amount | Possibility (in %) |
 | ------ | ----------- |
 | 0 | 0.00168 |
@@ -18,6 +19,20 @@ Appendix: The possibility of each dropping amount of siderite powder is in the f
 | 10 | 6.38523 |
 | 11 | 1.74143 |
 | 12 | 0.21768 |
+
+The possibility of each dropping amount of siderite powder of **deepslate** iron ore is in the following table:
+| Amount | Possibility (in %) |
+| ------ | ----------- |
+| 0 | 0.00005 |
+| 1 | 0.00184 |
+| 2 | 0.02949 |
+| 3 | 0.27525 |
+| 4 | 1.65151 |
+| 5 | 6.60603 |
+| 6 | 17.61608 |
+| 7 | 30.19899 |
+| 8 | 30.19899 |
+| 9 | 13.42177 |
 
 ### 6.0-β3
 - Iron shovel and hoe now rusts at the same speed as iron pickaxe.

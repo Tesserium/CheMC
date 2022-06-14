@@ -19,8 +19,22 @@ The possibility of each dropping amount of siderite powder is in the following t
 | 8 | 21.28409 |
 | 9 | 14.18940 |
 | 10 | 6.38523 |
-| 11 | 1.7	4143 |
+| 11 | 1.74143 |
 | 12 | 0.21768 |
+
+The possibility of each dropping amount of siderite powder of **deepslate** iron ore is in the following table:
+| Amount | Possibility (in %) |
+| ------ | ----------- |
+| 0 | 0.00005 |
+| 1 | 0.00184 |
+| 2 | 0.02949 |
+| 3 | 0.27525 |
+| 4 | 1.65151 |
+| 5 | 6.60603 |
+| 6 | 17.61608 |
+| 7 | 30.19899 |
+| 8 | 30.19899 |
+| 9 | 13.42177 |
 
 
 ## Versioning Convention
