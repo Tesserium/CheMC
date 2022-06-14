@@ -14,7 +14,7 @@
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/chemc/textures/item/triitontetraoxide_ingot.png",
 
   "environment": "*",
   "entrypoints": {

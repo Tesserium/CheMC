@@ -1,8 +1,12 @@
 {
 	"type": "smelting",
 	"group": "idk",
-	"ingredient": "chemc:siderite_powder",
+	"ingredient": [
+		{
+			"item": "chemc:siderite_powder"
+		}
+	],
 	"result": "chemc:diirontrioxide_powder",
 	"experience": 1,
-	"cookingtime": 25
+	"cookingtime": 20
 }

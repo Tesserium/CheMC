@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "chemc:coal_packofpowder"
+		},
+		{
+			"item": "chemc:siderite_packofpowder"
+		},
+		{
+			"item": "chemc:siderite_packofpowder"
+		}
+	],
+	"result": {
+		"item": "chemc:coal_mx_siderite_packofpowder",
+		"count": 1
+	}
+}

@@ -8,11 +8,11 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.OreBlock;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import xyz.code2828.chemc.items.ChemistryItem;
 import xyz.code2828.chemc.tarnishable.TarnishableAxeItem;
 import xyz.code2828.chemc.tarnishable.TarnishableHoeItem;
 import xyz.code2828.chemc.tarnishable.TarnishablePickaxeItem;
@@ -23,16 +23,26 @@ import xyz.code2828.chemc.toolclasses._PickaxeItem;
 import xyz.code2828.chemc.toolclasses._ShovelItem;
 import xyz.code2828.chemc.toolclasses._SwordItem;
 
-public class CheMC implements ModInitializer
+public final class CheMC implements ModInitializer
 {
+	/*
+	 * Abbreviations:
+	 * SW = sword; PX = pickaxe; AX = axe; HO = hoe; SV = shovel;
+	 * I = item; B = block; PD = powder; GS = grains; GR = grain;
+	 * DS = dust; IG = ingot; NG = nugget; BM = biome; BI = blockitem;
+	 * O = ore; BE = blockentity; F = feature; PP = pack of powder;
+	 * MX = (something) mixed with (another thing)
+	 */
 	public static final Logger LOGGER = LoggerFactory.getLogger("chemc");
-	public static final ChemistryItem DIIRONTRIOXIDE_POWDER = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 3);
-	public static final ChemistryItem DIIRONTRIOXIDE_GRAINS = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 2);
-	public static final ChemistryItem SIDERITE_POWDER = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 3);
-	public static final ChemistryItem SIDERITE_GRAINS = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 2);
-	public static final ChemistryItem TRIIRONTETRAOXIDE_INGOT = new ChemistryItem(
-			new FabricItemSettings().group(ItemGroup.MISC), 2);
-	public static final ChemistryItem TRIIRONTETRAOXIDE_DUST = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC),
+	public static final Item COAL_PP = new Item(new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item COAL_MX_SIDERITE_PP = new Item(new FabricItemSettings().group(ItemGroup.MISC));
+	public static final ChemistryItem DIIRONTRIOXIDE_PD = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 3);
+	public static final ChemistryItem DIIRONTRIOXIDE_PP = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 2);
+	public static final ChemistryItem SIDERITE_PD = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 3);
+	public static final ChemistryItem SIDERITE_PP = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 2);
+	public static final ChemistryItem TRIIRONTETRAOXIDE_IG = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC),
+			2);
+	public static final ChemistryItem TRIIRONTETRAOXIDE_DS = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC),
 			4);
 	public static final _PickaxeItem TRIIRONTETRAOXIDE_PX = new _PickaxeItem(CheMCMaterial.TRIIRONTETRAOXIDE,
 			new FabricItemSettings().group(ItemGroup.TOOLS));
@@ -122,12 +132,14 @@ public class CheMC implements ModInitializer
 	@Override
 	public void onInitialize()
 	{
-		registerI(DIIRONTRIOXIDE_POWDER, "diirontrioxide_powder");
-		registerI(DIIRONTRIOXIDE_GRAINS, "diirontrioxide_grains");
-		registerI(SIDERITE_POWDER, "siderite_powder");
-		registerI(SIDERITE_GRAINS, "siderite_grains");
-		registerI(TRIIRONTETRAOXIDE_INGOT, "triirontetraoxide_ingot");
-		registerI(TRIIRONTETRAOXIDE_DUST, "triirontetraoxide_dust");
+		registerI(COAL_PP, "coal_packofpowder");
+		registerI(COAL_MX_SIDERITE_PP, "coal_mx_siderite_packofpowder");
+		registerI(DIIRONTRIOXIDE_PD, "diirontrioxide_powder");
+		registerI(DIIRONTRIOXIDE_PP, "diirontrioxide_packofpowder");
+		registerI(SIDERITE_PD, "siderite_powder");
+		registerI(SIDERITE_PP, "siderite_packofpowder");
+		registerI(TRIIRONTETRAOXIDE_IG, "triirontetraoxide_ingot");
+		registerI(TRIIRONTETRAOXIDE_DS, "triirontetraoxide_dust");
 		registerI(TRIIRONTETRAOXIDE_PX, "triirontetraoxide_pickaxe");
 		registerI(TRIIRONTETRAOXIDE_SW, "triirontetraoxide_sword");
 		registerI(TRIIRONTETRAOXIDE_HO, "triirontetraoxide_hoe");
@@ -184,4 +196,6 @@ public class CheMC implements ModInitializer
  *
  * Additionally similar approach with InventoryOwner might catch some modded entities, if they happen to tick their inventories
  * I've had reason to write an entity that does that before
+ * 
+ * -- Daomephsta, discord
  */

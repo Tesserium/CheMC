@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "PPP",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item":"chemc:siderite_powder"
+    }
+  },
+  "result": {
+    "item": "chemc:siderite_packofpowder",
+    "count": 1
+  }
+}

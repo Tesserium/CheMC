@@ -15,7 +15,7 @@ public enum CheMCMaterial implements ToolMaterial
 		return Ingredient.ofItems(Items.COPPER_INGOT);
 	}), TRIIRONTETRAOXIDE(MiningLevels.NETHERITE, 1868, 7.0F, 2.1F, 7, () ->
 	{
-		return Ingredient.ofItems(CheMC.TRIIRONTETRAOXIDE_INGOT);
+		return Ingredient.ofItems(CheMC.TRIIRONTETRAOXIDE_IG);
 	}), UNRUSTED_IRON(MiningLevels.IRON, ToolMaterials.IRON.getDurability(), ToolMaterials.IRON.getMiningSpeedMultiplier(),
 			ToolMaterials.IRON.getAttackDamage(), ToolMaterials.IRON.getEnchantability(), () ->
 			{

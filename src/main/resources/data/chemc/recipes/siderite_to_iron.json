@@ -1,0 +1,12 @@
+{
+	"type": "smelting",
+	"group": "idk",
+	"ingredient": [
+		{
+			"item": "chemc:coal_mx_siderite_packofpowder"
+		}
+	],
+	"result": "minecraft:raw_iron",
+	"experience": 1,
+	"cookingtime": 270
+}

@@ -47,7 +47,7 @@
 									"function": "minecraft:set_count"
 								}
 							],
-							"name": "chemc:siderite_dust"
+							"name": "chemc:siderite_powder"
 						}
 					]
 				}
