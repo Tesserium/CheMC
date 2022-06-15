@@ -1,3 +1,6 @@
+### 6.0-α53
+- Hotfix for β5. Tweaked "Raw Iron Block" to "Siderite Block"
+
 ### 6.0-β5
 - Added all stuff in β4 to deepslate.
 - Added more recipes.

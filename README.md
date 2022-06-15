@@ -50,8 +50,8 @@ x | additional version number, can be omitted
 
 | α/β/γ/ψ/ω | meaning |
 | -- | -- |
-α | completely insider version, may not even launch properly<br>
-β | insider version, silimar to normal "alpha"<br>
-γ | similar to Minecraft "snapshot"<br>
-ψ | silimar to Minecraft "prerelease"<br>
-ω | release candidate<br>
+α | completely insider version, may not even launch properly. will only publish is it is a hotfix of β or γ.
+β | insider version, silimar to normal "alpha"
+γ | similar to Minecraft "snapshot"
+ψ | silimar to Minecraft "prerelease"
+ω | release candidate
