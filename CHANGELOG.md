@@ -1,3 +1,8 @@
+### 6.0-β5
+- Added all stuff in β4 to deepslate.
+- Added more recipes.
+- Raw Iron Block now drops 18 packs of siderite powder
+
 ### 6.0-β4
 - Iron ore (now called "siderite") now drops at most 12, on average 7.2 siderite powders. 9 siderite powders form a pack of siderite powder. 2 packs of siderite powder and 1 pack of coal powder can craft a "Siderite Powder Mixed with Coal". On smelting this mixture undergo the reaction of 2FeCO₃ + C --heat-> 2Fe + 3CO₂ and forms raw iron. Melt the raw iron again forms iron ingot.
 - Known bugs/non-scientific stuff: smelting siderite items will yield Fe₂O₃. It has no texture and no use.

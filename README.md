@@ -2,7 +2,7 @@
 A mod that aims to make Minecraft as scientific as possible. 
 
 # Modifications
-- All 4 iron tools now rusts.
+- All 4 iron tools rusts.
 - Iron ore (now called "siderite") now drops at most 12, on average 7.2 siderite powders. 9 siderite powders form a pack of siderite powder. 2 packs of siderite powder and 1 pack of coal powder can craft a "Siderite Powder Mixed with Coal". On smelting this mixture undergo the reaction of 2FeCO₃ + C == 2Fe + 3CO₂ and forms raw iron. Melt the raw iron to form iron ingot.
 
 The possibility of each dropping amount of siderite powder is in the following table:
