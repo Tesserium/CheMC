@@ -1,0 +1,12 @@
+{
+	"type": "smelting",
+	"group": "idk",
+	"ingredient": [
+		{
+			"item": "minecraft:raw_iron_block"
+		}
+	],
+	"result": "chemc:diirontrioxide_ingot",
+	"experience": 100,
+	"cookingtime": 300
+}

@@ -9,6 +9,7 @@ n=12, p=0.6, avg=7.2
 (1) 直接用于合成下界合金
 (2) 4Fe₃O₄ + O₂ --heat-> 6Fe₂O₃;
 	Fe₂O₃ + 3red --heat-> 2Fe + 3redO
+(3) Fe₃O₄ + 2C --heat-> 3Fe + 2CO₂
 	
 3. 黄铁矿
 (1) 2FeS₂ + 11O₂ --heat/burn-> 2Fe₂O₃ + 4SO₂;

@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.OreBlock;
 import net.minecraft.item.BlockItem;
@@ -31,13 +32,14 @@ public final class CheMC implements ModInitializer
 	 * I = item; B = block; PD = powder; GS = grains; GR = grain;
 	 * DS = dust; IG = ingot; NG = nugget; BM = biome; BI = blockitem;
 	 * O = ore; BE = blockentity; F = feature; PP = pack of powder;
-	 * MX = (something) mixed with (another thing)
+	 * MX = (something) mixed with (another thing); U = fuel
 	 */
 	public static final Logger LOGGER = LoggerFactory.getLogger("chemc");
 	public static final Item COAL_PP = new Item(new FabricItemSettings().group(ItemGroup.MISC));
 	public static final Item COAL_MX_SIDERITE_PP = new Item(new FabricItemSettings().group(ItemGroup.MISC));
 	public static final ChemistryItem DIIRONTRIOXIDE_PD = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 3);
 	public static final ChemistryItem DIIRONTRIOXIDE_PP = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 2);
+	public static final ChemistryItem DIIRONTRIOXIDE_IG = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 1);
 	public static final ChemistryItem SIDERITE_PD = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 3);
 	public static final ChemistryItem SIDERITE_PP = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 2);
 	public static final ChemistryItem TRIIRONTETRAOXIDE_IG = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC),
@@ -123,10 +125,15 @@ public final class CheMC implements ModInitializer
 				new BlockItem(block, new FabricItemSettings().group(iGroup)));
 	}
 
+	public void registerU(ItemConvertible ic, int burnTick)
+	{
+		FuelRegistry.INSTANCE.add(ic, burnTick);
+	}
+
 	public void registerO(OreBlock block, String unlocalizedName)
 	{}
 
-	public void registerB()
+	public void registerBM()
 	{}
 
 	@Override
@@ -136,6 +143,7 @@ public final class CheMC implements ModInitializer
 		registerI(COAL_MX_SIDERITE_PP, "coal_mx_siderite_packofpowder");
 		registerI(DIIRONTRIOXIDE_PD, "diirontrioxide_powder");
 		registerI(DIIRONTRIOXIDE_PP, "diirontrioxide_packofpowder");
+		registerI(DIIRONTRIOXIDE_IG, "diirontrioxide_ingot");
 		registerI(SIDERITE_PD, "siderite_powder");
 		registerI(SIDERITE_PP, "siderite_packofpowder");
 		registerI(TRIIRONTETRAOXIDE_IG, "triirontetraoxide_ingot");
@@ -169,7 +177,8 @@ public final class CheMC implements ModInitializer
 		registerI(MODERATELY_RUSTED_IRON_SV, "moderately_rusted_iron_shovel");
 		registerI(HEAVILY_RUSTED_IRON_SV, "heavily_rusted_iron_shovel");
 		registerI(COMPLETELY_RUSTED_IRON_SV, "completely_rusted_iron_shovel");
-//		registerI(COPPER_PX, "copper_pickaxe");
+		registerU(COAL_PP, 160);
+		registerU(COAL_MX_SIDERITE_PP, 150);
 	}
 
 }
@@ -197,5 +206,5 @@ public final class CheMC implements ModInitializer
  * Additionally similar approach with InventoryOwner might catch some modded entities, if they happen to tick their inventories
  * I've had reason to write an entity that does that before
  * 
- * -- Daomephsta, discord
+ * -- Daomephsta of discord
  */

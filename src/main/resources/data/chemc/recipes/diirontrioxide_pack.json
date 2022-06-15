@@ -7,11 +7,11 @@
   ],
   "key": {
     "P": {
-      "item":"chemc:coal_packofpowder"
+      "item":"chemc:diirontrioxide_powder"
     }
   },
   "result": {
-    "item": "minecraft:coal",
+    "item": "chemc:diirontrioxide_packofpowder",
     "count": 1
   }
 }

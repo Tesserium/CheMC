@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "chemc:siderite_packofpowder"
+		}
+	],
+	"result": {
+		"item": "chemc:siderite_powder",
+		"count": 9
+	}
+}

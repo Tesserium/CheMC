@@ -1,0 +1,12 @@
+{
+	"type": "smelting",
+	"group": "idk",
+	"ingredient": [
+		{
+			"item": "minecraft:iron_ore"
+		}
+	],
+	"result": "chemc:diirontrioxide_packofpowder",
+	"experience": 14,
+	"cookingtime": 200
+}
