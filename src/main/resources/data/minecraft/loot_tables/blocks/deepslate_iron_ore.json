@@ -41,13 +41,12 @@
 									"add": false,
 									"count": {
 										"type": "minecraft:binomial",
-										"n": 9,
-										"p": 0.8
-									},
+										"n": 5,
+										"p": 0.4									},
 									"function": "minecraft:set_count"
 								}
 							],
-							"name": "chemc:siderite_powder"
+							"name": "chemc:siderite_packofpowder"
 						}
 					]
 				}

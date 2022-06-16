@@ -1,4 +1,10 @@
-### 6.0-α53
+### 6.0-beta6
+- Tweaked the dropping probabilities and amount. Calculate them (of the deepslate ones) with C(5,r)\*0.4<sup>r</sup>\*(1-0.4)<sup>5-r</sup>, where `r` is the amount of items dropped. Replace 0.4 with 0.42 to calculate for normal ones. In this modification, siderite will yield (on average) 1 (deepslate) to 1.05 (normal) iron ingots.
+- Note: "depack"-ing a pack of powder and then smelt will be 10% faster, but will also gain 10% less experience.
+
+From this version on, version names will use the English name of Greek letters to avoid character obfuscation due to encoding difference.
+
+#### 6.0-α53
 - Hotfix for β5. Tweaked "Raw Iron Block" to "Siderite Block"
 
 ### 6.0-β5
