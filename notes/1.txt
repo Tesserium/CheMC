@@ -1,0 +1,25 @@
+/*
+ * `net.minecraft.item.Item.inventoryTick(ItemStack, World, Entity, int,
+ * boolean)` exists, however only players call it, and modded inventories may or
+ * may not. 
+ * To solve this 
+ * 1. store a timestamp in NBT 
+ * 2. In the inventoryTick override check if World.getTime() is greater than or equal to this timestamp
+ * 3. If yes, replace the stack with the oxidised version using the entity and slot index parameters 
+ * 4. Additionally, if an item has no oxidation timestamp,
+ * generate one
+ * 
+ * Unfortunately it's not possible to have the stack oxidise while in a
+ * non-ticking inventory, but with this approach the oxidation state will be
+ * corrected as soon as it enters a ticking inventory.
+ * 
+ * For 2 you'll need to
+ * 1. instanceof check for PlayerEntity
+ * 2. Cast so you can use PlayerEntity.getInventory() 
+ * 3. Call Inventory.setStack() using that
+ *
+ * Additionally similar approach with InventoryOwner might catch some modded entities, if they happen to tick their inventories
+ * I've had reason to write an entity that does that before
+ * 
+ * -- Daomephsta of discord
+ */

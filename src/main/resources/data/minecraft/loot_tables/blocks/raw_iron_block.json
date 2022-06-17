@@ -48,6 +48,29 @@
 								}
 							],
 							"name": "chemc:siderite_packofpowder"
+						},
+						{
+							"type": "minecraft:item",
+							"functions": [
+								{
+									"enchantment": "minecraft:fortune",
+									"formula": "minecraft:ore_drops",
+									"function": "minecraft:apply_bonus"
+								},
+								{
+									"function": "minecraft:explosion_decay"
+								},
+								{
+									"add": false,
+									"count": {
+										"type": "minecraft:binomial",
+										"n": 2,
+										"p": 0.4
+									},
+									"function": "minecraft:set_count"
+								}
+							],
+							"name": "minecraft:cobblestone"
 						}
 					]
 				}
