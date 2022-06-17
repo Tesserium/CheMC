@@ -1,5 +1,9 @@
-### 6.0-gamma1
+### 6.0-beta7
+This version lowered the generation probability to about 12% of the original values. This is because the following versions will add various other iron ores to the game like magnetite.
+
+## 6.0-gamma1
 The last part of siderite modification has completed. This version of the game is nearly bug-free, and can be considered as a "stable" version even if it is not the final release.
+I forgot to generate a jar...
 
 ### 6.0-beta6
 - Tweaked the dropping probabilities and amount. Calculate them (of the deepslate ones) with C(5,r)\*0.4<sup>r</sup>\*(1-0.4)<sup>5-r</sup>, where `r` is the amount of items dropped. Replace 0.4 with 0.42 to calculate for normal ones. In this modification, siderite will yield (on average) 1 (deepslate) to 1.05 (normal) iron ingots.
