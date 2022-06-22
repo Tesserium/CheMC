@@ -9,12 +9,15 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.Material;
 import net.minecraft.block.OreBlock;
+import net.minecraft.block.AbstractBlock.Settings;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
@@ -135,6 +138,8 @@ public final class CheMC implements ModInitializer
 	public static final TarnishableHoeItem UNRUSTED_IRON_HO = new TarnishableHoeItem(CheMCMaterial.UNRUSTED_IRON, -1.0F,
 			new FabricItemSettings().group(ItemGroup.TOOLS), SLIGHTLY_RUSTED_IRON_HO, 40000);
 	public static final OreBlock GOETHITE = new OreBlock(AbstractBlock.Settings.of(Material.STONE, MapColor.BLACK));
+	public static final BlastFurnaceBlock BLAST_FURNACE = new BlastFurnaceBlock(
+			AbstractBlock.Settings.of(Material.STONE, MapColor.GRAY));
 	public static ConfiguredFeature<?, ?> GOETHITE_SO_CF = new ConfiguredFeature(Feature.ORE,
 			new OreFeatureConfig(OreConfiguredFeatures.STONE_ORE_REPLACEABLES, GOETHITE.getDefaultState(), 7/*vein size*/));
 	public static PlacedFeature GOETHITE_SO_PF = new PlacedFeature(RegistryEntry.of(GOETHITE_SO_CF),
@@ -148,6 +153,7 @@ public final class CheMC implements ModInitializer
 			Arrays.asList(CountPlacementModifier.of(18), // number of veins per chunk
 					SquarePlacementModifier.of(), // spreading horizontally
 					HeightRangePlacementModifier.trapezoid(YOffset.getBottom(), YOffset.getTop()))); // height
+	public static BlockEntityType<BlastFurnaceBlockEntity> BLAST_FURNACE_BE;
 
 	public void registerI(ItemConvertible item, String unlocalizedName)
 	{
@@ -174,6 +180,12 @@ public final class CheMC implements ModInitializer
 				RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("chemc", unlocalizedName)));
 	}
 
+	public void registerBE(BlockEntityType<?> blockEntity, Block block, String unlocalizedName)
+	{
+		blockEntity = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier("chemc", unlocalizedName),
+				FabricBlockEntityTypeBuilder.create(BlastFurnaceBlockEntity::new, block).build(null));
+	}
+
 	public void registerBM()
 	{}
 
@@ -188,6 +200,7 @@ public final class CheMC implements ModInitializer
 		registerBlocks();
 		registerOreFeatures();
 		registerFuels();
+		registerBlockEntities();
 	}
 
 	public void registerItems()
@@ -247,6 +260,11 @@ public final class CheMC implements ModInitializer
 	public void registerFuels()
 	{
 		registerU(COAL_PP, 160);
+	}
+
+	public void registerBlockEntities()
+	{
+		registerBE(BLAST_FURNACE_BE, BLAST_FURNACE, "blast_furnace");
 	}
 
 }
