@@ -59,7 +59,6 @@ public final class CheMC implements ModInitializer
 	 */
 	public static final Logger LOGGER = LoggerFactory.getLogger("chemc");
 	public static final Item COAL_PP = new Item(new FabricItemSettings().group(ItemGroup.MISC));
-	public static final Item COAL_MX_SIDERITE_PP = new Item(new FabricItemSettings().group(ItemGroup.MISC));
 	public static final ChemistryItem DIIRONTRIOXIDE_PD = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 3);
 	public static final ChemistryItem DIIRONTRIOXIDE_PP = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 2);
 	public static final ChemistryItem DIIRONTRIOXIDE_IG = new ChemistryItem(new FabricItemSettings().group(ItemGroup.MISC), 1);
@@ -135,17 +134,17 @@ public final class CheMC implements ModInitializer
 			-1.0F, new FabricItemSettings().group(ItemGroup.TOOLS), MILDLY_RUSTED_IRON_HO, 36000);
 	public static final TarnishableHoeItem UNRUSTED_IRON_HO = new TarnishableHoeItem(CheMCMaterial.UNRUSTED_IRON, -1.0F,
 			new FabricItemSettings().group(ItemGroup.TOOLS), SLIGHTLY_RUSTED_IRON_HO, 40000);
-	public static final OreBlock MAGNETITE = new OreBlock(AbstractBlock.Settings.of(Material.STONE, MapColor.BLACK));
-	public static ConfiguredFeature<?, ?> MAGNETITE_SO_CF = new ConfiguredFeature(Feature.ORE,
-			new OreFeatureConfig(OreConfiguredFeatures.STONE_ORE_REPLACEABLES, MAGNETITE.getDefaultState(), 7/*vein size*/));
-	public static PlacedFeature MAGNETITE_SO_PF = new PlacedFeature(RegistryEntry.of(MAGNETITE_SO_CF),
+	public static final OreBlock GOETHITE = new OreBlock(AbstractBlock.Settings.of(Material.STONE, MapColor.BLACK));
+	public static ConfiguredFeature<?, ?> GOETHITE_SO_CF = new ConfiguredFeature(Feature.ORE,
+			new OreFeatureConfig(OreConfiguredFeatures.STONE_ORE_REPLACEABLES, GOETHITE.getDefaultState(), 7/*vein size*/));
+	public static PlacedFeature GOETHITE_SO_PF = new PlacedFeature(RegistryEntry.of(GOETHITE_SO_CF),
 			Arrays.asList(CountPlacementModifier.of(18), // number of veins per chunk
 					SquarePlacementModifier.of(), // spreading horizontally
 					HeightRangePlacementModifier.trapezoid(YOffset.getBottom(), YOffset.getTop()))); // height
-	public static final OreBlock DEEPSLATE_MAGNETITE = new OreBlock(AbstractBlock.Settings.of(Material.STONE, MapColor.BLACK));
-	public static ConfiguredFeature<?, ?> MAGNETITE_DO_CF = new ConfiguredFeature(Feature.ORE, new OreFeatureConfig(
-			OreConfiguredFeatures.DEEPSLATE_ORE_REPLACEABLES, DEEPSLATE_MAGNETITE.getDefaultState(), 7/*vein size*/));
-	public static PlacedFeature MAGNETITE_DO_PF = new PlacedFeature(RegistryEntry.of(MAGNETITE_DO_CF),
+	public static final OreBlock DEEPSLATE_GOETHITE = new OreBlock(AbstractBlock.Settings.of(Material.STONE, MapColor.BLACK));
+	public static ConfiguredFeature<?, ?> GOETHITE_DO_CF = new ConfiguredFeature(Feature.ORE, new OreFeatureConfig(
+			OreConfiguredFeatures.DEEPSLATE_ORE_REPLACEABLES, DEEPSLATE_GOETHITE.getDefaultState(), 7/*vein size*/));
+	public static PlacedFeature GOETHITE_DO_PF = new PlacedFeature(RegistryEntry.of(GOETHITE_DO_CF),
 			Arrays.asList(CountPlacementModifier.of(18), // number of veins per chunk
 					SquarePlacementModifier.of(), // spreading horizontally
 					HeightRangePlacementModifier.trapezoid(YOffset.getBottom(), YOffset.getTop()))); // height
@@ -194,7 +193,6 @@ public final class CheMC implements ModInitializer
 	public void registerItems()
 	{
 		registerI(COAL_PP, "coal_packofpowder");
-		registerI(COAL_MX_SIDERITE_PP, "coal_mx_siderite_packofpowder");
 		registerI(DIIRONTRIOXIDE_PD, "diirontrioxide_powder");
 		registerI(DIIRONTRIOXIDE_PP, "diirontrioxide_packofpowder");
 		registerI(DIIRONTRIOXIDE_IG, "diirontrioxide_ingot");
@@ -236,20 +234,19 @@ public final class CheMC implements ModInitializer
 	public void registerBlocks()
 	{
 		// block
-		registerB(MAGNETITE, "magnetite", ItemGroup.BUILDING_BLOCKS);
-		registerB(DEEPSLATE_MAGNETITE, "deepslate_magnetite", ItemGroup.BUILDING_BLOCKS);
+		registerB(GOETHITE, "goethite", ItemGroup.BUILDING_BLOCKS);
+		registerB(DEEPSLATE_GOETHITE, "deepslate_goethite", ItemGroup.BUILDING_BLOCKS);
 	}
 
 	public void registerOreFeatures()
 	{
-		registerO(MAGNETITE_SO_CF, MAGNETITE_SO_PF, "overworld_stone_magnetite");
-		registerO(MAGNETITE_DO_CF, MAGNETITE_DO_PF, "overworld_deepslate_magnetite");
+		registerO(GOETHITE_SO_CF, GOETHITE_SO_PF, "overworld_stone_goethite");
+		registerO(GOETHITE_DO_CF, GOETHITE_DO_PF, "overworld_deepslate_goethite");
 	}
 
 	public void registerFuels()
 	{
 		registerU(COAL_PP, 160);
-		registerU(COAL_MX_SIDERITE_PP, 150);
 	}
 
 }

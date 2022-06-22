@@ -24,7 +24,7 @@
 									}
 								}
 							],
-							"name": "chemc:magnetite"
+							"name": "chemc:goethite"
 						},
 						{
 							"type": "minecraft:item",
@@ -47,7 +47,7 @@
 									"function": "minecraft:set_count"
 								}
 							],
-							"name": "chemc:magnetite_powder"
+							"name": "chemc:goethite_packofpowder"
 						}
 					]
 				}
