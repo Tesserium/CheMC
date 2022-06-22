@@ -1,19 +1,39 @@
 package xyz.code2828.chemc;
 
+import java.util.Arrays;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.MapColor;
+import net.minecraft.block.Material;
 import net.minecraft.block.OreBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.YOffset;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.OreConfiguredFeatures;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.world.gen.placementmodifier.CountPlacementModifier;
+import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
+import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
 import xyz.code2828.chemc.tarnishable.TarnishableAxeItem;
 import xyz.code2828.chemc.tarnishable.TarnishableHoeItem;
 import xyz.code2828.chemc.tarnishable.TarnishablePickaxeItem;
@@ -31,8 +51,11 @@ public final class CheMC implements ModInitializer
 	 * SW = sword; PX = pickaxe; AX = axe; HO = hoe; SV = shovel;
 	 * I = item; B = block; PD = powder; GS = grains; GR = grain;
 	 * DS = dust; IG = ingot; NG = nugget; BM = biome; BI = blockitem;
-	 * O = ore; BE = blockentity; F = feature; PP = pack of powder;
-	 * MX = (something) mixed with (another thing); U = fuel
+	 * BE = blockentity; F = feature; PP = pack of powder;
+	 * MX = (something) mixed with (another thing); U = fuel;
+	 * OV = overworld; CF = configured feature; SF = structure feature;
+	 * CS = configured structure feature; PF = placed feature;
+	 * SO = stone ore; DO = deepslate ore
 	 */
 	public static final Logger LOGGER = LoggerFactory.getLogger("chemc");
 	public static final Item COAL_PP = new Item(new FabricItemSettings().group(ItemGroup.MISC));
@@ -112,6 +135,20 @@ public final class CheMC implements ModInitializer
 			-1.0F, new FabricItemSettings().group(ItemGroup.TOOLS), MILDLY_RUSTED_IRON_HO, 36000);
 	public static final TarnishableHoeItem UNRUSTED_IRON_HO = new TarnishableHoeItem(CheMCMaterial.UNRUSTED_IRON, -1.0F,
 			new FabricItemSettings().group(ItemGroup.TOOLS), SLIGHTLY_RUSTED_IRON_HO, 40000);
+	public static final OreBlock MAGNETITE = new OreBlock(AbstractBlock.Settings.of(Material.STONE, MapColor.BLACK));
+	public static ConfiguredFeature<?, ?> MAGNETITE_SO_CF = new ConfiguredFeature(Feature.ORE,
+			new OreFeatureConfig(OreConfiguredFeatures.STONE_ORE_REPLACEABLES, MAGNETITE.getDefaultState(), 7/*vein size*/));
+	public static PlacedFeature MAGNETITE_SO_PF = new PlacedFeature(RegistryEntry.of(MAGNETITE_SO_CF),
+			Arrays.asList(CountPlacementModifier.of(18), // number of veins per chunk
+					SquarePlacementModifier.of(), // spreading horizontally
+					HeightRangePlacementModifier.trapezoid(YOffset.getBottom(), YOffset.getTop()))); // height
+	public static final OreBlock DEEPSLATE_MAGNETITE = new OreBlock(AbstractBlock.Settings.of(Material.STONE, MapColor.BLACK));
+	public static ConfiguredFeature<?, ?> MAGNETITE_DO_CF = new ConfiguredFeature(Feature.ORE, new OreFeatureConfig(
+			OreConfiguredFeatures.DEEPSLATE_ORE_REPLACEABLES, DEEPSLATE_MAGNETITE.getDefaultState(), 7/*vein size*/));
+	public static PlacedFeature MAGNETITE_DO_PF = new PlacedFeature(RegistryEntry.of(MAGNETITE_DO_CF),
+			Arrays.asList(CountPlacementModifier.of(18), // number of veins per chunk
+					SquarePlacementModifier.of(), // spreading horizontally
+					HeightRangePlacementModifier.trapezoid(YOffset.getBottom(), YOffset.getTop()))); // height
 
 	public void registerI(ItemConvertible item, String unlocalizedName)
 	{
@@ -130,14 +167,31 @@ public final class CheMC implements ModInitializer
 		FuelRegistry.INSTANCE.add(ic, burnTick);
 	}
 
-	public void registerO(OreBlock block, String unlocalizedName)
-	{}
+	public void registerO(ConfiguredFeature<?, ?> cf, PlacedFeature pf, String unlocalizedName)
+	{
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("chemc", unlocalizedName), cf);
+		Registry.register(BuiltinRegistries.PLACED_FEATURE, new Identifier("chemc", unlocalizedName), pf);
+		BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES,
+				RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("chemc", unlocalizedName)));
+	}
 
 	public void registerBM()
 	{}
 
+	public void registerSF()
+	{}
+
 	@Override
 	public void onInitialize()
+	{
+		// registers
+		registerItems();
+		registerBlocks();
+		registerOreFeatures();
+		registerFuels();
+	}
+
+	public void registerItems()
 	{
 		registerI(COAL_PP, "coal_packofpowder");
 		registerI(COAL_MX_SIDERITE_PP, "coal_mx_siderite_packofpowder");
@@ -177,6 +231,23 @@ public final class CheMC implements ModInitializer
 		registerI(MODERATELY_RUSTED_IRON_SV, "moderately_rusted_iron_shovel");
 		registerI(HEAVILY_RUSTED_IRON_SV, "heavily_rusted_iron_shovel");
 		registerI(COMPLETELY_RUSTED_IRON_SV, "completely_rusted_iron_shovel");
+	}
+
+	public void registerBlocks()
+	{
+		// block
+		registerB(MAGNETITE, "magnetite", ItemGroup.BUILDING_BLOCKS);
+		registerB(DEEPSLATE_MAGNETITE, "deepslate_magnetite", ItemGroup.BUILDING_BLOCKS);
+	}
+
+	public void registerOreFeatures()
+	{
+		registerO(MAGNETITE_SO_CF, MAGNETITE_SO_PF, "overworld_stone_magnetite");
+		registerO(MAGNETITE_DO_CF, MAGNETITE_DO_PF, "overworld_deepslate_magnetite");
+	}
+
+	public void registerFuels()
+	{
 		registerU(COAL_PP, 160);
 		registerU(COAL_MX_SIDERITE_PP, 150);
 	}
