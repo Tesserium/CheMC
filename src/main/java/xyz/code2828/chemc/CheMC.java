@@ -16,7 +16,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.Material;
 import net.minecraft.block.OreBlock;
-import net.minecraft.block.AbstractBlock.Settings;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -180,9 +179,9 @@ public final class CheMC implements ModInitializer
 				RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("chemc", unlocalizedName)));
 	}
 
-	public void registerBE(BlockEntityType<?> blockEntity, Block block, String unlocalizedName)
+	public BlockEntityType<?> registerBE(BlockEntityType<?> blockEntity, Block block, String unlocalizedName)
 	{
-		blockEntity = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier("chemc", unlocalizedName),
+		return blockEntity = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier("chemc", unlocalizedName),
 				FabricBlockEntityTypeBuilder.create(BlastFurnaceBlockEntity::new, block).build(null));
 	}
 
@@ -249,6 +248,7 @@ public final class CheMC implements ModInitializer
 		// block
 		registerB(GOETHITE, "goethite", ItemGroup.BUILDING_BLOCKS);
 		registerB(DEEPSLATE_GOETHITE, "deepslate_goethite", ItemGroup.BUILDING_BLOCKS);
+		registerB(BLAST_FURNACE, "blast_furnace", ItemGroup.DECORATIONS);
 	}
 
 	public void registerOreFeatures()
@@ -264,7 +264,8 @@ public final class CheMC implements ModInitializer
 
 	public void registerBlockEntities()
 	{
-		registerBE(BLAST_FURNACE_BE, BLAST_FURNACE, "blast_furnace");
+		BLAST_FURNACE_BE = (BlockEntityType<BlastFurnaceBlockEntity>) registerBE(BLAST_FURNACE_BE, BLAST_FURNACE,
+				"blast_furnace");
 	}
 
 }

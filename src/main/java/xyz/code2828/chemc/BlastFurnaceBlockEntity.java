@@ -1,19 +1,49 @@
 package xyz.code2828.chemc;
 
+import java.util.List;
+import java.util.function.Consumer;
+
 import javax.annotation.Nullable;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.text.Text;
 
 public class BlastFurnaceBlockEntity extends BlockEntity
 {
 	private boolean limePresent;
+
+	public boolean isLimePresent()
+	{ return limePresent; }
+
+	public void setLimePresent(boolean limePresent)
+	{ this.limePresent = limePresent; }
+
+	public boolean isCharcoalPresent()
+	{ return charcoalPresent; }
+
+	public void setCharcoalPresent(boolean charcoalPresent)
+	{ this.charcoalPresent = charcoalPresent; }
+
+	public double getOreAmount()
+	{ return oreAmount; }
+
+	public void setOreAmount(double oreAmount)
+	{ this.oreAmount = oreAmount; }
+
+	public boolean isWorking()
+	{ return working; }
+
+	public void setWorking(boolean working)
+	{ this.working = working; }
+
 	private boolean charcoalPresent;
 	private double oreAmount;
 	private boolean working;
@@ -21,14 +51,12 @@ public class BlastFurnaceBlockEntity extends BlockEntity
 	public BlastFurnaceBlockEntity(BlockPos pos, BlockState state)
 	{
 		super(CheMC.BLAST_FURNACE_BE, pos, state);
-		// TODO Auto-generated constructor stub
 	}
 
 	// Serialize the BlockEntity
 	@Override
 	public void writeNbt(NbtCompound tag)
 	{
-		// Save the current value of the number to the tag
 		tag.putBoolean("charcoal_present", charcoalPresent);
 		tag.putBoolean("lime_present", limePresent);
 		tag.putBoolean("working", working);
@@ -63,11 +91,8 @@ public class BlastFurnaceBlockEntity extends BlockEntity
 	}
 
 	public static void tick(World world, BlockPos pos, BlockState state, BlastFurnaceBlockEntity be)
-	{
-		if(world.getTime()%200==0)
-		{
-			System.out.println("Ten seconds (200 ticks) has passed.");
-		}
-	}
+	{}
 
 }
+
+// https://discord.com/channels/507304429255393322/507982478276034570/989300657750179851
