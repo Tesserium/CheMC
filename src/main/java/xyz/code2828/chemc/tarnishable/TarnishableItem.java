@@ -53,9 +53,6 @@ public class TarnishableItem extends Item implements Tarnishable
 
 	@Override
 	public void setNextItem(ItemConvertible ic)
-	{
-		nextItem = ic;
-
-	}
+	{ nextItem = ic; }
 
 }

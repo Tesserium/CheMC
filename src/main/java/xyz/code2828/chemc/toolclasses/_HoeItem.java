@@ -1,7 +1,6 @@
 package xyz.code2828.chemc.toolclasses;
 
 import net.minecraft.item.HoeItem;
-import net.minecraft.item.MiningToolItem;
 import net.minecraft.item.ToolMaterial;
 
 public class _HoeItem extends HoeItem

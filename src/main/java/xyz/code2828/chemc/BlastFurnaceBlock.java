@@ -68,12 +68,28 @@ public class BlastFurnaceBlock extends BlockWithEntity
 				player.sendMessage(Text.of("[Blast Furnace]: You inserted 1 charcoal into the furnace."));
 			}
 		}
+		else if (i == Items.FLINT_AND_STEEL)
+		{
+			BlastFurnaceBlockEntity be = (BlastFurnaceBlockEntity) world.getBlockEntity(pos);
+			if (!be.isCharcoalPresent())
+			{
+				player.sendMessage(Text.of("[Blast Furnace]: You hadn't inserted charcoal yet!"));
+			}
+			else if (!be.isLimePresent())
+			{
+				player.sendMessage(Text.of("[Blast Furnace]: You hadn't inserted lime yet!"));
+			}
+			else
+			{
+				be.setWorking(true);
+			}
+		}
 		else if (i instanceof BlockItem)
 		{
 			Block b = ((BlockItem) i).getBlock();
 			if (b instanceof OreBlock)
 			{
-				if (BlastFurnaceSmeltableOres.create().hasObject(b))
+				if (true)
 				{
 					player.sendMessage(Text.of("You put in ore " + b.toString() + "."));
 				}

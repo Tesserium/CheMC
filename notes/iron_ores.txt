@@ -18,7 +18,6 @@ n=12, p=0.6, avg=7.2
 4. 黄铜矿
 (1) 2CuFeS₂ + 13O₂ --heat/burn-> 2Fe₂O₃ + 4SO₂ + 2CuO;
 	2CuO + 2Fe₂O₃ + 8red --heat-> 2Fe₂Cu + 8redO
-... where Fe/Cu will probably used as a great conductor with magnetic properties (?)
 
 5. 赤铁矿/褐铁矿
 (1) Fe₂O₃·xH₂O + 3red --heat-> 2Fe + 3redO + xH₂O

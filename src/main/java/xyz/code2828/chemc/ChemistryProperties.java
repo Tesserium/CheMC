@@ -11,7 +11,7 @@ public class ChemistryProperties
 	private String elemental_formula;
 	private String usual_formula;
 	private String display_formula;
-	private String subscripts = "₀₁₂₃₄₅₆₇₈₉";
+	public	 final String subscripts = "₀₁₂₃₄₅₆₇₈₉";
 
 	public String getElementalFormula()
 	{ return elemental_formula; }
